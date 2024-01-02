@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<div class=page>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+   <body>
+    <h2>Zumba songs Playlist: Here you can edit your personal choice</h2>
+    <form action="/update/submit" method="POST">
+      <table border = 1>
+          <tr>
+            <th>song ID</th>
+            <th>Name</th> 
+            <th>Artist</th>
+            <th>YouTube URL</th>
+            <th>Grade</th>
+        </tr>
+         {% for index,row_num in table.iterrows(): %}
+            <tr>
+               <td> {{ row_num['song_id'] }} </td>
+               <td> {{ row_num['name'] }} </td>
+               <td> {{ row_num['artist'] }} </td>
+               <td> {{ row_num['youtube_url'] }} </td>
+               <td><input type="text" name={{ index }} id="content" value={{ row_num['grade'] }}></td>
+            </tr>
+         {% endfor %}
+      </table>
+      <input type="text" name="content" value={{ id_c }}>
+      <input type="submit" name="action" value="update">
+      </form>
+      <form action='/' method='GET'>
+        <input type="submit" name="action" value="back to main">
+    </form>
+   </body>
+   </div>
+</html>

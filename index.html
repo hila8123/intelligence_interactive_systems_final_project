@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<div class=page>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<body>
+    <h1>Zumba songs Playlist: From Personal to Social</h1>
+    <h5>Search your personal choice by inserting your ID number:</h5>
+    <form action="/" method="POST">
+        <input type="text" name="content" id="content">
+        <input type="submit" name="action" value="watch">
+        <input type="submit" name="action" value="update">
+        <input type="submit" name="action" value="insert new">
+    </form>
+    <h5>{{ data }}:</h5>
+    <h3>Playlist social results</h3>
+        {{ table|safe }}
+    <form action='/' method='GET'>
+        <input type="submit" name="action" value="back to main">
+    </form>
+</body>
+</div>
+</html>
